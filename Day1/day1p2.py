@@ -1,21 +1,5 @@
 
 
-with open('./data.txt', 'r') as f:
-    data = f.readlines()
-
-listNum = ["1", "2", "3", "4", "5", "6", "7", "8","9","10"]
-dictNumLetter = {
-    "one": 1,
-    "two": 2,
-    "three": 3,
-    "four": 4,
-    "five": 5,
-    "six": 6,
-    "seven": 7,
-    "eight": 8,
-    "nine": 9,
-}
-
 def createReverseDict(dictInput : dict):
     result = {}
     
@@ -37,15 +21,15 @@ def findLetter(dictionary : dict, inputStr : str):
     return firstKey, firstIndex
 
 
-def findNumber(inputStr : str):
+def findNumber(inputStr : str, listNum : list[int]):
     for i in range(0, len(inputStr)):
         if (inputStr[i] in listNum):
             return inputStr[i], i
     return None, None
 
 
-def getFirstNum(line: str, dictionary: dict):
-    numberValue, numberIndex = findNumber(line)
+def getFirstNum(line: str, dictionary: dict, listNum : list[int]):
+    numberValue, numberIndex = findNumber(line, listNum)
     letterKey, letterIndex = findLetter(dictionary, line)
     if (numberIndex != None):
         if (letterKey != ""):
@@ -58,15 +42,32 @@ def getFirstNum(line: str, dictionary: dict):
     return None
     
 
-sum = 0
-dictNumLetterReversed = createReverseDict(dictNumLetter)
+if __name__ == '__main__':
 
-for line in data:
-    firstNum = getFirstNum(line, dictNumLetter)
-    lastNum = getFirstNum(line[::-1], dictNumLetterReversed)
-    if (firstNum != None and lastNum != None):
-        sum += int(firstNum) * 10 + int(lastNum)
-  
+    with open('./data.txt', 'r') as f:
+        data = f.readlines()
 
+    
+    listNum = ["1", "2", "3", "4", "5", "6", "7", "8","9","10"]
+    dictNumLetter = {
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5,
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9,
+    }
 
-print(sum)
+    sum = 0
+    dictNumLetterReversed = createReverseDict(dictNumLetter)
+
+    for line in data:
+        firstNum = getFirstNum(line, dictNumLetter, listNum)
+        lastNum = getFirstNum(line[::-1], dictNumLetterReversed, listNum)
+        if (firstNum != None and lastNum != None):
+            sum += int(firstNum) * 10 + int(lastNum)
+
+    print(sum)
