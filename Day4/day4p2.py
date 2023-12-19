@@ -25,12 +25,9 @@ def updateCardDict(card : str, cardDict : dict, cardIndex : int):
             dictWinningNumber[number] += 1
     totalCorrectNumber = sum(list(dictWinningNumber.values()))
 
-    
-    
     if (totalCorrectNumber != 0):
         for time in range(totalCorrectNumber):
             cardDict[cardIndex + time + 1] += cardDict[cardIndex]
-    # print(f'card {cardIndex} - totalCorrectNumber = {totalCorrectNumber} - cardDict = {cardDict}')
 
     return cardDict
 
@@ -49,6 +46,3 @@ if __name__ == '__main__':
 
     print(sum(list(cardDict.values())))
     
-    # for card in data:
-    #     totalScore += getCardScrore(card)
-    # print(totalScore)
