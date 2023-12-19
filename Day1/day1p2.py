@@ -48,7 +48,7 @@ if __name__ == '__main__':
         data = f.readlines()
 
     
-    listNum = ["1", "2", "3", "4", "5", "6", "7", "8","9","10"]
+    listNum = ["1", "2", "3", "4", "5", "6", "7", "8","9"]
     dictNumLetter = {
         "one": 1,
         "two": 2,

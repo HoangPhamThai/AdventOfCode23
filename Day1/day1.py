@@ -18,7 +18,7 @@ if __name__ == '__main__':
     with open('./data.txt', 'r') as f:
         data = f.readlines()
 
-    listNum = ["1", "2", "3", "4", "5", "6", "7", "8","9","10"]
+    listNum = ["1", "2", "3", "4", "5", "6", "7", "8","9"]
     sum = 0
 
     for line in data:
